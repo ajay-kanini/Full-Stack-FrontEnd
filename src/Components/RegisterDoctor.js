@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import './RegisterDoctor.css';
+import { Link, useNavigate } from "react-router-dom";
+
 
 function RegisterDoctor() {
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     "id": 0,
     "name": "",
@@ -33,11 +36,16 @@ function RegisterDoctor() {
       "body": JSON.stringify({ ...user, "user": {} })
     })
       .then(async (data) => {
-        if (data.status === 201) {
-          alert("ok");
+        if (data.status == 201) {
+            
           var myData = await data.json();
           console.log(myData);
           localStorage.setItem("token", myData.token.toString());
+          navigate("/doctorDetails")
+        }
+        else if(data.status== 500 || data.status== 400)
+        {
+            alert("Email id already exist or Invalid Email address")
         }
       })
       .catch((err) => {

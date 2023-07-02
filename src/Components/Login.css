@@ -45,6 +45,11 @@
     background-color: hsla(0, 0%, 100%, 0.9) !important;
     backdrop-filter: saturate(200%) blur(25px);
   }
+
+  .bg-cardnew{
+    background-color: white;
+    height: 500px;
+  }
   
   .text-left {
     color: hsla(218, 81%, 95%, 0.8);
@@ -68,4 +73,12 @@
     text-align: center;
   }
   
-  
+  .form-outline {
+    height: 100px; /* Adjust the desired height */
+    width: 300px; /* Adjust the desired width */
+  }
+
+  .form-control {
+    font-size: 15px; /* Adjust the desired font size */
+    padding: 12px; /* Adjust the desired padding */
+  }

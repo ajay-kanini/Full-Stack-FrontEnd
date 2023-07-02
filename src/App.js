@@ -7,6 +7,7 @@ import RegisterDoctor from './Components/RegisterDoctor';
 import RegisterPatient from './Components/RegisterPatient';
 import GetAllDoctors from './Components/GetAllDoctors';
 import UpdateDoctor from './Components/UpdateDoctor';
+import DoctorDetails from './Components/DoctorDetails';
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +19,7 @@ function App() {
           <Route path="/registerPac" element={<RegisterPatient/>}/>
           <Route path="/getAllDocs" element={<GetAllDoctors/>}/>
           <Route path="/updateDocs" element={<UpdateDoctor/>}/>   
+          <Route path="/doctorDetails" element={<DoctorDetails/>}/>
         </Routes>
       </div>
     </BrowserRouter>

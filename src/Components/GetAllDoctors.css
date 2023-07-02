@@ -1,4 +1,4 @@
-.my-background-radial-gradient {
+/* .background-radial-gradient {
   position: fixed;
   top: 0;
   left: 0;
@@ -10,18 +10,26 @@
   background-image: radial-gradient(650px circle at 0% 0%, hsl(218, 41%, 35%) 15%, hsl(218, 41%, 30%) 35%, hsl(218, 41%, 20%) 75%, hsl(218, 41%, 19%) 80%, transparent 100%), radial-gradient(1250px circle at 100% 100%, hsl(218, 41%, 45%) 15%, hsl(218, 41%, 30%) 35%, hsl(218, 41%, 20%) 75%, hsl(218, 41%, 19%) 80%, transparent 100%);
 }
 
-.my-doctors-container {
+.doctorsDetails-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: flex-start;
-  height: 100vh;
   text-align: center;
   margin-top: 150px;
-  margin-left: 350px; 
+  margin-left: 10px;
+  padding: 20px;
+  overflow-y: scroll;
+  max-height: calc(100vh - 150px);
+  scrollbar-width: thin; 
+  scrollbar-color: transparent transparent; 
 }
 
-.my-page-heading {
+.doctorsDetails-container::-webkit-scrollbar {
+  width: 0; 
+}
+
+.page-heading {
   position: absolute;
   top: 50px;
   left: 50%;
@@ -29,7 +37,8 @@
   color: #ccc;
 }
 
-.my-cards {
+
+.cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -37,7 +46,7 @@
   gap: 20px;
 }
 
-.my-card {
+.doc-card {
   background: linear-gradient(to right, #3a6186, #89253e) !important;
   backdrop-filter: saturate(200%) blur(25px);
   height: 250px;
@@ -46,20 +55,20 @@
   padding: 10px;
 }
 
-.my-card-title {
+.card-title {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
   color: #fff;
 }
 
-.my-card-text {
+.card-text {
   margin-bottom: 5px;
   color: #ccc;
 }
 
-.card-4 {
+.doc-card {
   align-self: flex-start;
   margin-top: 20px;
   margin-left: 0;
-}
+} */
