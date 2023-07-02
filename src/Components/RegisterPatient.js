@@ -1,6 +1,8 @@
   import React, { useState } from "react";
   import './RegisterPatient.css';
   import { Link, useNavigate } from "react-router-dom";
+  import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function RegisterPatient() {
   const navigate = useNavigate();
@@ -34,6 +36,7 @@ function RegisterPatient() {
       .then(async (data) => {
         if (data.status == 201) 
         {
+          toast.success("Successfully Registered")  
           var myData = await data.json();
           console.log(myData);
           localStorage.setItem("token", myData.token.toString());
@@ -41,7 +44,7 @@ function RegisterPatient() {
         }
         else if(data.status==400 || data.status==500)
         {
-            alert("Email address already exists or Invalid Email address");
+          toast.error("Invalid Email address or Email already exist")
         }
       })
       .catch((err) => {

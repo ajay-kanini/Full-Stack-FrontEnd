@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './Login.css';
 import { Link, useNavigate } from "react-router-dom";
 import NavBar from './NavBar';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Login() {
   const navigate = useNavigate();
@@ -24,7 +26,7 @@ function Login() {
         .then(async (data)=>{ 
         if(data.status == 201)
         {
-            alert("Welcome");
+            toast.success("Welcome back")
             var myData = await data.json();
             console.log(myData); 
             localStorage.setItem("Id" , myData.id.toString());
@@ -44,7 +46,7 @@ function Login() {
         }
         else 
         {
-          alert("Invali Username or Password");
+          toast.error("Invalid Username or Password")
         }
       }).catch((err)=>{
         console.log(err.error)
@@ -53,7 +55,6 @@ function Login() {
   return (
     <>
     <NavBar/>
-    <p>Hello</p>
     <section className="background-radial-gradient overflow-hidden">
       <div className="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
         <div className="row gx-lg-5 align-items-center mb-5">

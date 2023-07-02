@@ -1,32 +1,45 @@
 import React, { useState, useEffect } from 'react';
 import './DoctorDetails.css';
-import NavBar from './NavBar';
+import Navbar2 from './Navbar2';
 import image from "../Assets/doctor.png";
 
 function DoctorDetails() {
   const [doctors, setDoctors] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const doctorId = localStorage.getItem('Id'); // Retrieve the ID from localStorage
-    fetch(`http://localhost:5179/api/Hospital/GetOneDoctor/${doctorId}`)
-      .then(response => response.json())
-      .then(data => {
-        setDoctors(data);
-        console.log(data);
+    const doctorId = localStorage.getItem('Id');
+    fetch(`http://localhost:5179/api/Hospital/GetOneDoctor?key=${doctorId}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch doctor details');
+        }
+        return response.json();
       })
-      .catch(error => console.log(error));
+      .then(data => {
+        if (data && Array.isArray(data.doctors)) {
+          setDoctors(data.doctors);
+        } else {
+          setError('Invalid response data');
+        }
+      })
+      .catch(error => {
+        setError(error.message);
+      });
   }, []);
 
   return (
     <section className="new-background-radial-gradient">
-      <NavBar />
+      <Navbar2 />
       <div className="new-container">
         <div className="details-section">
           <div className="doctor-details">
             <div className="page-heading">
               <h2>Doctor Details</h2>
             </div>
-            {doctors.length > 0 ? (
+            {error ? (
+              <div>Error: {error}</div>
+            ) : (
               <div className="details">
                 {doctors.map((doctor, index) => (
                   <div key={index} className="doc-details">
@@ -43,8 +56,6 @@ function DoctorDetails() {
                   </div>
                 ))}
               </div>
-            ) : (
-              <div>No doctor details available.</div>
             )}
           </div>
         </div>

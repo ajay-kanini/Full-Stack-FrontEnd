@@ -9,10 +9,12 @@ import RegisterPatient from './Components/RegisterPatient';
 import GetAllDoctors from './Components/GetAllDoctors';
 import UpdateDoctor from './Components/UpdateDoctor';
 import DoctorDetails from './Components/DoctorDetails';
+import { ToastContainer } from 'react-toastify';
 function App() {
   return (
     <BrowserRouter>
     <div>
+      <ToastContainer theme='colored'></ToastContainer>
       <NavBar/>
         <Routes>
           <Route path="/" element={<Home/>}/>

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './UpdateDoctor.css';
 import NavBar2 from './Navbar2';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function UpdateDoctor() {
   const [doctors, setDoctors] = useState([]);
@@ -23,16 +25,22 @@ function UpdateDoctor() {
       method: "PUT",
       headers: {
         "Accept": "text/plain",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        'Authorization' : 'Bearer' + localStorage.getItem('token')
       },
       body: JSON.stringify({ "id": id })
     })
       .then(async (data) => {
         if (data.status === 201) {
+          toast.success("Approved")  
           var myData = await data.json();
           console.log(myData);
+          fetchNotApproved();
+        }        
+        else if(data.status === 401)
+        {
+          toast.error("Unauthorized")
         }
-        fetchNotApproved();
       })
       .catch((err) => {
         console.log(err.error);

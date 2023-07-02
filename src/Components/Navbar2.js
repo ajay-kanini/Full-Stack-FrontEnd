@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import './NavBar.css';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function NavBar2() {
   const navigate = useNavigate();
   var logOut=()=>{ 
+     toast.success("Bye!!!");    
      navigate("/");   
     localStorage.clear()};
   return (
