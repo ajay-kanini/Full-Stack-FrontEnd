@@ -8,17 +8,13 @@ function DoctorDetails() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const doctorId = localStorage.getItem('Id');
+    const doctorId = Number(localStorage.getItem('Id'));
     fetch(`http://localhost:5179/api/Hospital/GetOneDoctor?key=${doctorId}`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Failed to fetch doctor details');
-        }
-        return response.json();
-      })
-      .then(data => {
-        if (data && Array.isArray(data.doctors)) {
-          setDoctors(data.doctors);
+      .then( async (data) => {
+        console.log(data);
+        if (Array.isArray(data) ) {
+          setDoctors(await data.doctors);
+          console.log(data);
         } else {
           setError('Invalid response data');
         }
@@ -41,7 +37,7 @@ function DoctorDetails() {
               <div>Error: {error}</div>
             ) : (
               <div className="details">
-                {doctors.map((doctor, index) => (
+                {doctors.map((doctor, index) => { return(
                   <div key={index} className="doc-details">
                     <div className="detail-title">Name:</div>
                     <div className="detail-text">{doctor.name}</div>
@@ -54,7 +50,7 @@ function DoctorDetails() {
                     <div className="detail-title">Qualifications:</div>
                     <div className="detail-text">{doctor.qualifications}</div>
                   </div>
-                ))}
+                )})}
               </div>
             )}
           </div>

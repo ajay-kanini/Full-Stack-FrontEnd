@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function NavBar2() {
   const navigate = useNavigate();
   var logOut=()=>{ 
-     toast.success("Bye!!!");    
+     toast.error("Bye!!!");    
      navigate("/");   
     localStorage.clear()};
   return (

@@ -23,8 +23,8 @@ function RegisterPatient() {
     "password": ""
   });
 
-  const register = () => {
-    console.log("summa");
+  const register =(event) => {
+    event.preventDefault();
     fetch("http://localhost:5179/api/Hospital/RegisterPatient", {
       "method": "POST",
       headers: {
@@ -42,9 +42,13 @@ function RegisterPatient() {
           localStorage.setItem("token", myData.token.toString());
           navigate("/getAllDocs");
         }
-        else if(data.status==400 || data.status==500)
+        else if(data.status == 400)
         {
-          toast.error("Invalid Email address or Email already exist")
+            toast.error("Invalid Email address")
+        }
+        else if(data.status == 500)
+        {
+          toast.error("Mail address already exist")
         }
       })
       .catch((err) => {

@@ -26,13 +26,13 @@ function UpdateDoctor() {
       headers: {
         "Accept": "text/plain",
         "Content-Type": "application/json",
-        'Authorization' : 'Bearer' + localStorage.getItem('token')
+        'Authorization' : 'Bearer ' + localStorage.getItem('token')
       },
       body: JSON.stringify({ "id": id })
     })
       .then(async (data) => {
         if (data.status === 201) {
-          toast.success("Approved")  
+          toast.success("Status Updated")  
           var myData = await data.json();
           console.log(myData);
           fetchNotApproved();
