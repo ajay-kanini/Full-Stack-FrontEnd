@@ -5,11 +5,16 @@ function UpdateDoctor() {
   const [doctors, setDoctors] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5179/api/Hospital/GetDoctorDetails')
-      .then(response => response.json())
-      .then(data => {setDoctors(data);})
-      .catch(error => console.log(error));
+    fetchNotApproved();
   }, []);
+
+
+ const fetchNotApproved=()=>{
+       fetch('http://localhost:5179/api/Hospital/GetDoctorDetails')
+      .then(response => response.json())
+      .then(data => { setDoctors(data); })
+      .catch(error => console.log(error));
+ }
 
   return (
     <section className="background-radial-gradient overflow-hidden">
@@ -25,6 +30,34 @@ function UpdateDoctor() {
                 <p className="card-text">Age: {doctor.age}</p>
                 <p className="card-text">Specialization: {doctor.specialization}</p>
                 <p className="card-text">Qualifications: {doctor.qualifications}</p>
+                <p className="card-text">Status: {doctor.status}</p>
+                <hr />
+                <button
+                  className="change-status-btn"
+                  onClick={() => {
+                    fetch("http://localhost:5179/api/Hospital/UpdateDoctorStatus", {
+                      method: "PUT",
+                      headers: {
+                        "Accept": "text/plain",
+                        "Content-Type": "application/json"
+                      },
+                      body: JSON.stringify({ "id": doctor.id }) 
+                    })
+                      .then(async (data) => {
+                        if (data.status === 201) {
+                          var myData = await data.json();
+                          console.log(myData);
+                        }
+                        fetchNotApproved();
+                      })
+                      .catch((err) => {
+                        console.log(err.error);
+                      });
+                      
+                  }}
+                >
+                  Change Status
+                </button>
               </div>
             </div>
           ))}

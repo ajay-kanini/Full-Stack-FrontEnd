@@ -18,7 +18,7 @@
   height: 100vh;
   text-align: center;
   margin-top: 150px;
-  margin-left: 300px; 
+  margin-left: 350px; 
 }
 
 .my-page-heading {
@@ -41,7 +41,7 @@
   background: linear-gradient(to right, #3a6186, #89253e) !important;
   backdrop-filter: saturate(200%) blur(25px);
   height: 250px;
-  width: 300px;
+  width: 400px;
   margin: 20px;
   padding: 10px;
 }

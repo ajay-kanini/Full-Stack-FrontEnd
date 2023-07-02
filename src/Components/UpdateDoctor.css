@@ -18,7 +18,7 @@
   height: 100vh;
   text-align: center;
   margin-top: 150px;
-  margin-left: 300px;
+  margin-left: 350px;
 }
 
 .page-heading {
@@ -40,10 +40,10 @@
 .card {
   background: linear-gradient(to right, #3a6186, #89253e) !important;
   backdrop-filter: saturate(200%) blur(25px);
-  height: 250px;
-  width: 300px;
+  height: 350px;
+  width: 400px;
   margin: 20px;
-  padding: 10px;
+  padding: 20px;
 }
 
 .card-title {
@@ -62,4 +62,21 @@
   align-self: flex-start;
   margin-top: 20px;
   margin-left: 0;
+}
+
+.change-status-btn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.change-status-btn:hover {
+  background-color: #45a049;
 }
