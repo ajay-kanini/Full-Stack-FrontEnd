@@ -1,4 +1,4 @@
-/* .background-radial-gradient {
+.background-radial-gradient {
   position: fixed;
   top: 0;
   left: 0;
@@ -10,60 +10,60 @@
   background-image: radial-gradient(650px circle at 0% 0%, hsl(218, 41%, 35%) 15%, hsl(218, 41%, 30%) 35%, hsl(218, 41%, 20%) 75%, hsl(218, 41%, 19%) 80%, transparent 100%), radial-gradient(1250px circle at 100% 100%, hsl(218, 41%, 45%) 15%, hsl(218, 41%, 30%) 35%, hsl(218, 41%, 20%) 75%, hsl(218, 41%, 19%) 80%, transparent 100%);
 }
 
-.scrollable-container {
-  overflow: hidden;
-}
-
-.doctors-container {
+.doctors-container-new {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: flex-start;
-  height: 100vh;
   text-align: center;
   margin-top: 150px;
   margin-left: 200px;
+  padding: 20px;
+  overflow-y: scroll;
+  max-height: calc(100vh - 150px);
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
 }
 
-.page-heading {
+.doctors-container-new::-webkit-scrollbar {
+  width: 0;
+  background-color: transparent;
+}
+
+.page-heading-new {
   position: absolute;
-  top: 50px;
+  top: 100px;
   left: 50%;
   transform: translateX(-50%);
   color: #ccc;
 }
 
-.cards {
+.cards-new {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: flex-start;
   gap: 20px;
-  overflow-y: auto;
-  padding-right: 20px;
+  margin-left: 0; /* Add this line to align the first row */
 }
 
-.card {
+.card-new {
   background: linear-gradient(to right, #3a6186, #89253e) !important;
-  backdrop-filter: saturate(200%) blur(25px); 
+  backdrop-filter: saturate(200%) blur(25px);
   height: 350px;
   width: 350px;
   margin: 20px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  padding: 10px;
 }
 
-.card-title {
+.card-title-new {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
   color: #fff;
 }
 
-.card-text {
+.card-text-new {
   margin-bottom: 5px;
   color: #ccc;
 }
@@ -74,7 +74,7 @@
   margin-left: 0;
 }
 
-.change-status-btn {
+.change-status-btn-new {
   background-color: #4caf50;
   color: white;
   border: none;
@@ -87,15 +87,14 @@
   cursor: pointer;
 }
 
-.change-status-btn:hover {
+.change-status-btn-new:hover {
   background-color: #45a049;
 }
 
-.card-body {
-
+.card-body-new {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
   text-align: center;
-} */
+}

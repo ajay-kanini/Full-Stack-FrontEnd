@@ -3,6 +3,7 @@ import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import Login from './Components/Login';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './Components/NavBar';
+import Home from './Components/Home';
 import RegisterDoctor from './Components/RegisterDoctor';
 import RegisterPatient from './Components/RegisterPatient';
 import GetAllDoctors from './Components/GetAllDoctors';
@@ -11,9 +12,10 @@ import DoctorDetails from './Components/DoctorDetails';
 function App() {
   return (
     <BrowserRouter>
-      <div>
-        {/* <NavBar/> */}
+    <div>
+      <NavBar/>
         <Routes>
+          <Route path="/" element={<Home/>}/>
           <Route path="/login" element={<Login />} />
           <Route path="/registerDoc" element={<RegisterDoctor/>}/>
           <Route path="/registerPac" element={<RegisterPatient/>}/>

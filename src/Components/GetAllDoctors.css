@@ -1,4 +1,4 @@
-/* .background-radial-gradient {
+.background-radial-gradient {
   position: fixed;
   top: 0;
   left: 0;
@@ -16,8 +16,8 @@
   justify-content: flex-start;
   align-items: flex-start;
   text-align: center;
-  margin-top: 150px;
-  margin-left: 10px;
+  margin-top: 80px;
+  margin-left: 150px;
   padding: 20px;
   overflow-y: scroll;
   max-height: calc(100vh - 150px);
@@ -31,7 +31,7 @@
 
 .page-heading {
   position: absolute;
-  top: 50px;
+  top: 80px;
   left: 50%;
   transform: translateX(-50%);
   color: #ccc;
@@ -71,4 +71,4 @@
   align-self: flex-start;
   margin-top: 20px;
   margin-left: 0;
-} */
+}

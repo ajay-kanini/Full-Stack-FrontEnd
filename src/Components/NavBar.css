@@ -1,3 +1,15 @@
+.navbar{
+  display: block;
+  border-bottom: 5px solid rgba(255, 255, 255, 0.1);
+}
+
+nav span{
+  font-size: 1.3rem;
+}
+
+.logOut{
+  font-size: 1.3rem;
+}
 .navbar-nav.ml-auto .nav-link {
   padding-right: 1rem;
   padding-left: 1rem;

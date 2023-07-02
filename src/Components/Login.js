@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Login.css';
 import { Link, useNavigate } from "react-router-dom";
+import NavBar from './NavBar';
 
 function Login() {
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ function Login() {
             alert("Welcome");
             var myData = await data.json();
             console.log(myData); 
+            localStorage.setItem("Id" , myData.id.toString());
             localStorage.setItem("token" , myData.token.toString());
             if(myData.role=="Admin")
             {
@@ -37,7 +39,7 @@ function Login() {
             }
             else if(myData.role=="Doctor")
             {
-              navigate("/updateDocs")
+              navigate("/doctorDetails")
             }         
         }
         else 
@@ -49,6 +51,9 @@ function Login() {
       })
     }
   return (
+    <>
+    <NavBar/>
+    <p>Hello</p>
     <section className="background-radial-gradient overflow-hidden">
       <div className="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
         <div className="row gx-lg-5 align-items-center mb-5">
@@ -78,7 +83,7 @@ function Login() {
                         Email address
                     </label>
                     <input type="email" id="form3Example3" className="form-control" onChange={(event)=>{
-                     setUser({...user, "mail":event.target.value}) }} />
+                      setUser({...user, "mail":event.target.value}) }} />
                     </div>
 
                     {/* Password input */}
@@ -115,6 +120,7 @@ function Login() {
         </div>
       </div>
     </section>
+</>
   );
 };
 
