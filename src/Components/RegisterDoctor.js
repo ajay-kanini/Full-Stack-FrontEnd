@@ -3,26 +3,24 @@ import './RegisterDoctor.css';
 
 function RegisterDoctor() {
   const [user, setUser] = useState({
-    
+    "id": 0,
+    "name": "",
+    "dateOfBirth": new Date(),
+    "age": 0,
+    "gender": "",
+    "specialization": "",
+    "qualifications": "",
+    "phoneNumber": "",
+    "address": "",
+    "status": "",
+    "users": {
       "id": 0,
-      "name": "",
-      "dateOfBirth": new Date(),
-      "age": 0,
-      "gender": "",
-      "specialization": "",
-      "qualifications": "",
-      "phoneNumber": "",
-      "address": "",
-      "status": "",
-      "users": {
-        "id": 0,
-        "mail": "",
-        "role": "",
-        "passwordHash": "",
-        "passwordKey": ""
-      },
-      "password": ""
-
+      "mail": "",
+      "role": "",
+      "passwordHash": "",
+      "passwordKey": ""
+    },
+    "password": ""
   });
 
   var register = () => {
@@ -35,13 +33,14 @@ function RegisterDoctor() {
       "body": JSON.stringify({ ...user, "user": {} })
     })
       .then(async (data) => {
-        if (data.status == 201) {
-          alert("ok")
+        if (data.status === 201) {
+          alert("ok");
           var myData = await data.json();
           console.log(myData);
           localStorage.setItem("token", myData.token.toString());
         }
-      }).catch((err) => {
+      })
+      .catch((err) => {
         console.log(err.error);
       });
   };
@@ -130,7 +129,7 @@ function RegisterDoctor() {
                         }}
                       />
                     </div>
-                  </div>               
+                  </div>
 
                   <div className="form-row">
                     <div className="form-col">
@@ -164,7 +163,21 @@ function RegisterDoctor() {
 
                   <div className="form-row">
                     <div className="form-col">
-                      <label className="form-label" htmlFor="Mail">
+                      <label className="form-label" htmlFor="age">
+                        Age
+                      </label>
+                      <input
+                        type="text"
+                        id="age"
+                        className="form-control"
+                        onChange={(event) => {
+                          setUser({ ...user, "age": event.target.value });
+                        }}
+                      />
+                    </div>
+
+                    <div className="form-col">
+                      <label className="form-label" htmlFor="mail">
                         Mail
                       </label>
                       <input
@@ -172,47 +185,50 @@ function RegisterDoctor() {
                         id="mail"
                         className="form-control"
                         onChange={(event) => {
-                          setUser({ ...user, "mail": event.target.value });
-                        }}
-                      />
-                    </div>
-
-                    <div className="form-col">
-                      <label className="form-label" htmlFor="Password">
-                        Password
-                      </label>
-                      <input
-                        type="password"
-                        id="passwaor"
-                        className="form-control"
-                        onChange={(event) => {
-                          setUser({ ...user, "password": event.target.value });
+                          setUser({ ...user, users: { ...user.users, "mail": event.target.value } });
                         }}
                       />
                     </div>
                   </div>
 
                   <div className="form-col">
-                    <label className="form-label" htmlFor="Address">
+                    <label className="form-label" htmlFor="address">
                       Address
                     </label>
                     <textarea
                       className="form-control textarea-input"
                       id="address"
-                      rows="1" 
-                      style={{ height: '55px' }} // Set the desired height here
+                      rows="1"
+                      style={{ height: '55px' }}
                       onChange={(event) => {
                         setUser({ ...user, "address": event.target.value });
                       }}
                     ></textarea>
                   </div>
 
-                  <div className="text-center mb-4"> {/* Add mb-4 class for bottom margin */}
+                  <div className="form-row">
+                    <div className="form-col">
+                      <label className="form-label" htmlFor="password" style={{marginTop:"10px"}}>
+                        Password
+                      </label>
+                      <input
+                        type="password"
+                        id="password"
+                        className="form-control"
+                        onChange={(event) => {
+                          setUser({ ...user, "password": event.target.value  });
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="text-center mb-4">
                     <button
                       type="submit"
                       className="btn btn-primary btn-block"
                       onClick={register}
-                      style={{ position:"relative", top:"25px", left:"5px"}} >
+                      style={{ position: 'relative', top: '25px', left: '5px' }}
+                    >
                       Register
                     </button>
                   </div>

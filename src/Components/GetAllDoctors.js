@@ -7,26 +7,27 @@ function GetAllDoctors() {
   useEffect(() => {
     fetch('http://localhost:5179/api/Hospital/GetDoctorDetails')
       .then(response => response.json())
-      .then(data => setDoctors(data))
+      .then(data => {
+        const approvedDoctors = data.filter(doctor => doctor.status === 'Approved');
+        setDoctors(approvedDoctors);
+      })
       .catch(error => console.log(error));
   }, []);
 
   return (
-    <section className="background-radial-gradient overflow-hidden">
-      <div className="doctors-container container">
-        <div className="page-heading">
+    <section className="my-background-radial-gradient overflow-hidden">
+      <div className="my-doctors-container">
+        <div className="my-page-heading">
           <h2>Doctor Details</h2>
         </div>
-        <div className="row row-cols-1 row-cols-md-3 g-4">
-          {doctors.map(doctor => (
-            <div key={doctor.id} className="col">
-              <div className="card bg-glass">
-                <div className="card-body">
-                  <h5 className="card-title">{doctor.name}</h5>
-                  <p className="card-text">Age: {doctor.age}</p>
-                  <p className="card-text">Specialization: {doctor.specialization}</p>
-                  <p className="card-text">Qualifications: {doctor.qualifications}</p>
-                </div>
+        <div className="my-cards">
+          {doctors.map((doctor, index) => (
+            <div key={doctor.id} className={`my-card card-${index}`}>
+              <div className="my-card-body">
+                <h5 className="my-card-title">{doctor.name}</h5>
+                <p className="my-card-text">Age: {doctor.age}</p>
+                <p className="my-card-text">Specialization: {doctor.specialization}</p>
+                <p className="my-card-text">Qualifications: {doctor.qualifications}</p>
               </div>
             </div>
           ))}

@@ -6,6 +6,7 @@ import NavBar from './Components/NavBar';
 import RegisterDoctor from './Components/RegisterDoctor';
 import RegisterPatient from './Components/RegisterPatient';
 import GetAllDoctors from './Components/GetAllDoctors';
+import UpdateDoctor from './Components/UpdateDoctor';
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +17,7 @@ function App() {
           <Route path="/registerDoc" element={<RegisterDoctor/>}/>
           <Route path="/registerPac" element={<RegisterPatient/>}/>
           <Route path="/getAllDocs" element={<GetAllDoctors/>}/>
+          <Route path="/updateDocs" element={<UpdateDoctor/>}/>   
         </Routes>
       </div>
     </BrowserRouter>
