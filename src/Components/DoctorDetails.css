@@ -50,17 +50,20 @@
   .details {
     display: flex;
     flex-direction: column;
+    height: 150px;
+    width: 200px;
     gap: 10px;
   }
   
   .doc-details {
-    display: flex;
-    flex-direction: column;
+    width: 70%; /* Increase the width to make the form wider */
+    margin: 0 auto; /* Center the form horizontally */
   }
   
   .detail-title {
     font-size: 16px;
     font-weight: bold;
+    width: 200px;
   }
   
   .detail-text {
@@ -72,7 +75,18 @@
     height: 550px;
     margin-left: -300%;
   }
-  
+  .details-section {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 40px;
+    border-radius: 10px;
+  }
+  .text {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #333;
+    font-weight:lighter;
+  }
   @media (max-width: 768px) {
     .new-doctorImage {
       width: 200px;

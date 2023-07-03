@@ -2,21 +2,28 @@ import React, { useState, useEffect } from 'react';
 import './DoctorDetails.css';
 import Navbar2 from './Navbar2';
 import image from "../Assets/doctor.png";
+import { toast } from 'react-toastify';
+import { Link, useNavigate } from "react-router-dom";
 
 function DoctorDetails() {
+  const navigate = useNavigate();
   const [doctors, setDoctors] = useState([]);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
+  useEffect(() => {    
     const doctorId = Number(localStorage.getItem('Id'));
+    console.log(doctorId);
     fetch(`http://localhost:5179/api/Hospital/GetOneDoctor?key=${doctorId}`)
       .then( async (data) => {
-        console.log(data);
-        if (Array.isArray(data) ) {
-          setDoctors(await data.doctors);
+        if (data.status == 200) {
+          var myData=await data.json();
+          setDoctors(await myData);   
           console.log(data);
-        } else {
-          setError('Invalid response data');
+        } 
+        if(myData.status=="Not Approved")
+        {
+          toast.error("You are not authorized yet")
+          navigate('/');
         }
       })
       .catch(error => {
@@ -33,32 +40,34 @@ function DoctorDetails() {
             <div className="page-heading">
               <h2>Doctor Details</h2>
             </div>
-            {error ? (
-              <div>Error: {error}</div>
-            ) : (
-              <div className="details">
-                {doctors.map((doctor, index) => { return(
-                  <div key={index} className="doc-details">
-                    <div className="detail-title">Name:</div>
-                    <div className="detail-text">{doctor.name}</div>
-                    <div className="detail-title">Age:</div>
-                    <div className="detail-text">{doctor.age}</div>
-                    <div className="detail-title">Gender:</div>
-                    <div className="detail-text">{doctor.gender}</div>
-                    <div className="detail-title">Specialization:</div>
-                    <div className="detail-text">{doctor.specialization}</div>
-                    <div className="detail-title">Qualifications:</div>
-                    <div className="detail-text">{doctor.qualifications}</div>
-                  </div>
-                )})}
+            <div className="details">
+              <div className="doc-details">
+                <div className="detail-title">
+                  <span>Name:</span> <span className='text'>{doctors.name}</span>
+                </div>
+                <div className="detail-title">
+                  <span>Age:</span> <span className='text'>{doctors.age}</span>
+                </div>
+                <div className="detail-title">
+                  <span>Gender:</span> <span className='text'>{doctors.gender}</span>
+                </div>
+                <div className="detail-title">
+                  <span>Specialization:</span> <span className='text'>{doctors.specialization}</span>
+                </div>
+                <div className="detail-title">
+                  <span>Qualifications:</span> <span className='text'> {doctors.qualifications} </span>
+                </div>
               </div>
-            )}
+            </div>
           </div>
         </div>
         <div className="image-section">
           <img src={image} className="new-doctorImage" alt="Doctor" />
         </div>
       </div>
+        <div className="image-section">
+          <img src={image} className="new-doctorImage" alt="Doctor" />
+        </div>
     </section>
   );
 }

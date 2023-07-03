@@ -26,7 +26,7 @@ function Login() {
         .then(async (data)=>{ 
         if(data.status == 201)
         {
-            toast.success("Welcome back")
+            toast.success("Hi")
             var myData = await data.json();
             console.log(myData); 
             localStorage.setItem("Id" , myData.id.toString());
