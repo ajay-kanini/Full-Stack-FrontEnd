@@ -14,7 +14,7 @@ function Login() {
       "role": "",
       "token": ""
     });
-
+    
     var login = ()=>{
       fetch("http://localhost:5179/api/Hospital/Login",{
         "method":"POST",
@@ -31,17 +31,18 @@ function Login() {
             console.log(myData); 
             localStorage.setItem("Id" , myData.id.toString());
             localStorage.setItem("token" , myData.token.toString());
-            if(myData.role=="Admin")
+            localStorage.setItem("role", myData.role);
+            if(myData.role ==="Admin")
             {
-              navigate("/updateDocs")
+              navigate("/updateDocs");
             }
-            else if(myData.role=="Patient")
+            else if(myData.role ==="Patient")
             {
-              navigate("/getAllDocs")
+              navigate("/getAllDocs");
             }
-            else if(myData.role=="Doctor")
+            else if(myData.role ==="Doctor")
             {
-              navigate("/doctorDetails")
+              navigate("/doctorDetails");
             }         
         }
         else 
@@ -83,7 +84,7 @@ function Login() {
                    <label className="form-label text-start custom-label" htmlFor="form3Example3">
                         Email address
                     </label>
-                    <input type="email" id="form3Example3" className="form-control" onChange={(event)=>{
+                    <input type="email" id="form3Example3" className="form-control inputBox" onChange={(event)=>{
                       setUser({...user, "mail":event.target.value}) }} />
                     </div>
 
@@ -92,7 +93,7 @@ function Login() {
                     <label className="form-label text-start custom-label" htmlFor="form3Example4">
                         Password
                     </label>
-                    <input type="password" id="form3Example4" className="form-control" onChange={(event)=>{
+                    <input type="password" id="form3Example4" className="form-control inputBox" onChange={(event)=>{
                     setUser({...user, "password":(event.target.value)})}}/>
                     </div>
 

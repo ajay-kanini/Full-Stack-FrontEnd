@@ -1,96 +1,96 @@
 .new-background-radial-gradient {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background-color: hsl(218, 41%, 15%);
-    background-image: radial-gradient(
-      650px circle at 0% 0%,
-      hsl(218, 41%, 35%) 15%,
-      hsl(218, 41%, 30%) 35%,
-      hsl(218, 41%, 20%) 75%,
-      hsl(218, 41%, 19%) 80%,
-      transparent 100%
-    ),
-    radial-gradient(
-      1250px circle at 100% 100%,
-      hsl(218, 41%, 45%) 15%,
-      hsl(218, 41%, 30%) 35%,
-      hsl(218, 41%, 20%) 75%,
-      hsl(218, 41%, 19%) 80%,
-      transparent 100%
-    );
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: hsl(218, 41%, 15%);
+  background-image: radial-gradient(
+    650px circle at 0% 0%,
+    hsl(218, 41%, 35%) 15%,
+    hsl(218, 41%, 30%) 35%,
+    hsl(218, 41%, 20%) 75%,
+    hsl(218, 41%, 19%) 80%,
+    transparent 100%
+  ),
+  radial-gradient(
+    1250px circle at 100% 100%,
+    hsl(218, 41%, 45%) 15%,
+    hsl(218, 41%, 30%) 35%,
+    hsl(218, 41%, 20%) 75%,
+    hsl(218, 41%, 19%) 80%,
+    transparent 100%
+  );
+}
+
+.new-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 0 20px;
+  max-width: 100%;
+}
+
+.doctor-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #212529;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  width: 400px;
+  height: 600px;
+  margin-left:30px;
   
-  .new-container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    height: 100vh;
-    padding-right: 20px;
-  }
-  
+}
+
+.page-heading {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+h3 {
+  color: #FFF;
+}
+
+.text {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #FFF;
+  font-weight: lighter;
+  text-align: center;
+}
+
+.new-doctorImage {
+  width: 100%;
+  max-width: 350px;
+  height: 600px;
+  margin-right:100px ;
+}
+
+@media (max-width: 768px) {
   .doctor-details {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
   }
-  
-  .page-heading {
-    margin-bottom: 20px;
-  }
-  
-  .details {
-    display: flex;
-    flex-direction: column;
-    height: 150px;
-    width: 200px;
-    gap: 10px;
-  }
-  
-  .doc-details {
-    width: 70%; /* Increase the width to make the form wider */
-    margin: 0 auto; /* Center the form horizontally */
-  }
-  
-  .detail-title {
-    font-size: 16px;
-    font-weight: bold;
-    width: 200px;
-  }
-  
-  .detail-text {
-    font-size: 14px;
-  }
-  
+
   .new-doctorImage {
-    width: 350px;
-    height: 550px;
-    margin-left: -300%;
+    max-width: 200px;
   }
+
   .details-section {
-    background-color: rgba(255, 255, 255, 0.5);
-    padding: 40px;
-    border-radius: 10px;
+    width: 100%;
   }
-  .text {
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 5px;
-    color: #333;
-    font-weight:lighter;
-  }
-  @media (max-width: 768px) {
-    .new-doctorImage {
-      width: 200px;
-      height: 200px;
-    }
-  }
-  
+}

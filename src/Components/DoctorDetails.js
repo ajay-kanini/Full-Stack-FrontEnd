@@ -14,14 +14,13 @@ function DoctorDetails() {
     const doctorId = Number(localStorage.getItem('Id'));
     console.log(doctorId);
     fetch(`http://localhost:5179/api/Hospital/GetOneDoctor?key=${doctorId}`)
-      .then( async (data) => {
+      .then(async (data) => {
         if (data.status == 200) {
-          var myData=await data.json();
+          var myData = await data.json();
           setDoctors(await myData);   
           console.log(data);
         } 
-        if(myData.status=="Not Approved")
-        {
+        if (myData.status == "Not Approved") {
           toast.error("You are not authorized yet")
           navigate('/');
         }
@@ -35,39 +34,33 @@ function DoctorDetails() {
     <section className="new-background-radial-gradient">
       <Navbar2 />
       <div className="new-container">
+      <div className="image-section">
+              <img src={image} className="new-doctorImage" alt="Doctor" />
+            </div>
         <div className="details-section">
           <div className="doctor-details">
             <div className="page-heading">
-              <h2>Doctor Details</h2>
+              <h2>Doctor Detail</h2>
             </div>
             <div className="details">
-              <div className="doc-details">
-                <div className="detail-title">
-                  <span>Name:</span> <span className='text'>{doctors.name}</span>
-                </div>
-                <div className="detail-title">
-                  <span>Age:</span> <span className='text'>{doctors.age}</span>
-                </div>
-                <div className="detail-title">
-                  <span>Gender:</span> <span className='text'>{doctors.gender}</span>
-                </div>
-                <div className="detail-title">
-                  <span>Specialization:</span> <span className='text'>{doctors.specialization}</span>
-                </div>
-                <div className="detail-title">
-                  <span>Qualifications:</span> <span className='text'> {doctors.qualifications} </span>
-                </div>
-              </div>
+              <h3>Name:</h3>
+              <p className='text'>{doctors.name}</p>
+
+              <h3>Age:</h3>
+              <p className='text'>{doctors.age}</p>
+
+              <h3>Gender:</h3>
+              <p className='text'>{doctors.gender}</p>
+
+              <h3>Specialization:</h3>
+              <p className='text'>{doctors.specialization}</p>
+
+              <h3>Qualifications:</h3>
+              <p className='text'>{doctors.qualifications}</p>
             </div>
           </div>
         </div>
-        <div className="image-section">
-          <img src={image} className="new-doctorImage" alt="Doctor" />
-        </div>
       </div>
-        <div className="image-section">
-          <img src={image} className="new-doctorImage" alt="Doctor" />
-        </div>
     </section>
   );
 }

@@ -26,7 +26,6 @@ function RegisterDoctor() {
     },
     "password": ""
   });
-
   var register =  (event) => {
     event.preventDefault();
     fetch("http://localhost:5179/api/Hospital/RegisterDoctor", {
@@ -186,7 +185,7 @@ function RegisterDoctor() {
                         className="form-control"
                         onChange={(event) => {
                           setUser({ ...user, "age": event.target.value });
-                        }}
+                         }}
                       />
                     </div>
 

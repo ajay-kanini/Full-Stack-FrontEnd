@@ -10,6 +10,10 @@ import GetAllDoctors from './Components/GetAllDoctors';
 import UpdateDoctor from './Components/UpdateDoctor';
 import DoctorDetails from './Components/DoctorDetails';
 import { ToastContainer } from 'react-toastify';
+import Admin from './Protected/Admin';
+import Doctor from './Protected/Doctor';
+import Patient from './Protected/Patient';
+
 function App() {
   return (
     <BrowserRouter>
@@ -21,9 +25,16 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/registerDoc" element={<RegisterDoctor/>}/>
           <Route path="/registerPac" element={<RegisterPatient/>}/>
+          {/* <Route path="/updateDocs" element={<UpdateDoctor/>}/>
           <Route path="/getAllDocs" element={<GetAllDoctors/>}/>
-          <Route path="/updateDocs" element={<UpdateDoctor/>}/>   
-          <Route path="/doctorDetails" element={<DoctorDetails/>}/>
+          <Route path="/doctorDetails" element={<DoctorDetails/>}/> */}
+          
+          <Route path="/getAllDocs" element={
+            <Patient role={localStorage.getItem('role')}> <GetAllDoctors/> </Patient>}/>
+           <Route path="/updateDocs" element={
+            <Admin role={localStorage.getItem('role')}> <UpdateDoctor/> </Admin> }/>   
+          <Route path="/doctorDetails" element={
+            <Doctor role={localStorage.getItem('role')}> <DoctorDetails/> </Doctor> }/>
         </Routes>
       </div>
     </BrowserRouter>
