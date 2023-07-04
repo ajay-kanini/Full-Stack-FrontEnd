@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './GetAllDoctors.css';
 import NavBar2 from './Navbar2';
+import PrintDoctor from './PrintDoctor';
 
 
 function GetAllDoctors() {
   const [doctors, setDoctors] = useState([]);
+  const [searchQuery, setSearchQuery] = useState([]);
 
   useEffect(() => {
     fetch('http://localhost:5179/api/Hospital/GetDoctorDetails')
@@ -17,27 +19,24 @@ function GetAllDoctors() {
   }, []);
 
   return (
-    <>
+
     <div className="background-radial-gradient overflow-hidden">
         <NavBar2/>
       <div className="doctorsDetails-container">
         <div className="page-heading">
+        <input type='text' className='searchFilter' value={searchQuery} placeholder="&nbsp;search your doctors..." onChange={(event)=>setSearchQuery(event.target.value)}/>
           <h2>Doctor Details</h2>
         </div>
-        <div className="cards">
-          {doctors.map((doctor, index) => (
-            <div key={doctor.id} className="doc-card">
-                  <h5 className="card-title">{doctor.name}</h5>
-                  <p className="card-text">Age: {doctor.age}</p>
-                  <p className="card-text">Gender: {doctor.gender}</p>
-                  <p className="card-text">Specialization: {doctor.specialization}</p>
-                  <p className="card-text">Qualifications: {doctor.qualifications}</p>
-            </div>              
-           ))}
-        </div>
+        {
+          // 
+          doctors.filter((doctor)=>searchQuery.trim() ==='' || searchQuery.toLowerCase()===doctor.specialization.toLowerCase())
+          .map((doctor,index)=>{
+            return(<PrintDoctor key={index} object= {doctor}/>)
+          })
+        }
       </div>
     </div>
-    </>
+    
   );
 }
 

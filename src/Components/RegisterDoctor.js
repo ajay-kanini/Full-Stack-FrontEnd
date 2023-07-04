@@ -57,6 +57,24 @@ function RegisterDoctor() {
         console.log(err.error);
       });
   };
+  
+  const validateAge = () => {
+    if (user.age <= 0) {
+      setUser({ ...user, age: 0 }); 
+      toast.info("Age must be greater than 0", { autoClose: 2000 });
+    }
+  };
+
+  const validateDateOfBirth = (event) => {
+    const enteredDate = new Date(event.target.value);
+    const currentDate = new Date();
+
+    if (enteredDate > currentDate) {
+      toast.info("Date of birth cannot be on the future", { autoClose: 2000 })
+      event.target.value = "";
+      setUser({ ...user, "dateOfBirth": "" }); 
+    }
+  };
 
   return (
     <section className="background-radial-gradient overflow-hidden">
@@ -107,6 +125,8 @@ function RegisterDoctor() {
                         type="date"
                         id="dateOfBirth"
                         className="form-control"
+                        value={user.dateOfBirth}
+                        onBlur={validateDateOfBirth} 
                         onChange={(event) => {
                           setUser({ ...user, "dateOfBirth": event.target.value });
                         }}
@@ -183,6 +203,7 @@ function RegisterDoctor() {
                         type="text"
                         id="age"
                         className="form-control"
+                        onBlur={validateAge}
                         onChange={(event) => {
                           setUser({ ...user, "age": event.target.value });
                          }}

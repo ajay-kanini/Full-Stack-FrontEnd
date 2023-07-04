@@ -21,8 +21,7 @@ function DoctorDetails() {
           console.log(data);
         } 
         if (myData.status == "Not Approved") {
-          toast.error("You are not authorized yet")
-          navigate('/');
+          navigate('/message');
         }
       })
       .catch(error => {

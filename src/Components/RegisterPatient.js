@@ -36,7 +36,7 @@ function RegisterPatient() {
       .then(async (data) => {
         if (data.status == 201) 
         {
-          toast.success("Successfully Registered")  
+          toast.success("Successfully Registered",{autoClose : 1000})  
           var myData = await data.json();
           console.log(myData);
           localStorage.setItem("token", myData.token.toString());
@@ -44,18 +44,34 @@ function RegisterPatient() {
         }
         else if(data.status == 400)
         {
-            toast.error("Invalid Email address")
+            toast.error("Invalid Email address",{autoClose : 1000})
         }
         else if(data.status == 500)
         {
-          toast.error("Mail address already exist")
+          toast.error("Mail address already exist", {autoClose : 1000})
         }
       })
       .catch((err) => {
         console.log(err.error);
       });
   };
+  const validateAge = () => {
+    if (user.age <= 0) {
+      setUser({ ...user, age: 0 }); 
+      toast.info("Age must be greater than 0", { autoClose: 2000 });
+    }
+  };
 
+  const validateDateOfBirth = (event) => {
+    const enteredDate = new Date(event.target.value);
+    const currentDate = new Date();
+
+    if (enteredDate > currentDate) {
+      toast.info("Date of birth cannot be on the future", { autoClose: 2000 })
+      event.target.value = "";
+      setUser({ ...user, "dateOfBirth": "" }); 
+    }
+  };
   return (
     <section className="background-radial-gradient overflow-hidden">
       <div className="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
@@ -121,6 +137,7 @@ function RegisterPatient() {
                       type="date"
                       id="form3Example3"
                       className="form-control"
+                      onBlur={validateDateOfBirth} 
                       style={{ marginRight: '10px' }} // Added margin to the right
                       onChange={(event) => {
                         setUser({ ...user, "dateOfBirth": event.target.value });
@@ -135,6 +152,7 @@ function RegisterPatient() {
                       type="number"
                       id="form3Example4"
                       className="form-control"
+                      onBlur={validateAge} 
                       style={{ marginLeft: '10px' }} // Added margin to the left
                       onChange={(event) => {
                         setUser({ ...user, "age": event.target.value });

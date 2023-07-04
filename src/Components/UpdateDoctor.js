@@ -32,14 +32,14 @@ function UpdateDoctor() {
     })
       .then(async (data) => {
         if (data.status === 201) {
-          toast.success("Status Updated")  
+          toast.success("Status Updated",  { autoClose: 1000 })  
           var myData = await data.json();
           console.log(myData);
           fetchNotApproved();
         }        
         else if(data.status === 401)
         {
-          toast.error("Unauthorized")
+          toast.error("Unauthorized",  { autoClose: 1000 })
         }
       })
       .catch((err) => {

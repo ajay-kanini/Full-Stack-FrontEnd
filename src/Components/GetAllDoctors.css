@@ -17,7 +17,7 @@
   align-items: flex-start;
   text-align: center;
   margin-top: 80px;
-  margin-left: 150px;
+  margin-left: 100px;
   padding: 20px;
   overflow-y: scroll;
   max-height: calc(100vh - 150px);
@@ -72,3 +72,34 @@
   margin-top: 20px;
   margin-left: 0;
 }
+
+.searchFilter {
+  position: relative;
+  top:35px;
+  right:525px;
+  border-radius: 50px;
+  width: 200px;
+  background: linear-gradient(to right, #3a6186, #89253e) !important;
+  backdrop-filter: saturate(200%) blur(25px);
+  font-size: 16px;
+  color: #fff;
+}
+
+::placeholder
+{
+  color:#fff;
+}
+
+@media (max-width: 768px) {
+  .searchFilter {
+    position: absolute;
+    top: 70px; 
+    right: 50%;
+    transform: translateX(50%);
+    border-radius: 50px;
+    width: 200px;
+    font-size: 14px;
+  }
+}
+
+

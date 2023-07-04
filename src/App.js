@@ -13,7 +13,8 @@ import { ToastContainer } from 'react-toastify';
 import Admin from './Protected/Admin';
 import Doctor from './Protected/Doctor';
 import Patient from './Protected/Patient';
-
+import Notify from './Protected/Notify';
+import Message from './Components/Message';
 function App() {
   return (
     <BrowserRouter>
@@ -25,10 +26,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/registerDoc" element={<RegisterDoctor/>}/>
           <Route path="/registerPac" element={<RegisterPatient/>}/>
-          {/* <Route path="/updateDocs" element={<UpdateDoctor/>}/>
-          <Route path="/getAllDocs" element={<GetAllDoctors/>}/>
-          <Route path="/doctorDetails" element={<DoctorDetails/>}/> */}
-          
+
+          <Route path="/message" element={
+            <Notify role={localStorage.getItem('role')}> <Message/> </Notify>
+          }/>
           <Route path="/getAllDocs" element={
             <Patient role={localStorage.getItem('role')}> <GetAllDoctors/> </Patient>}/>
            <Route path="/updateDocs" element={

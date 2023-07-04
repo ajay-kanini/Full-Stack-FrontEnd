@@ -26,7 +26,7 @@ function Login() {
         .then(async (data)=>{ 
         if(data.status == 201)
         {
-            toast.success("Hi")
+            toast.success("Hi", { autoClose: 1000 })
             var myData = await data.json();
             console.log(myData); 
             localStorage.setItem("Id" , myData.id.toString());
@@ -45,9 +45,13 @@ function Login() {
               navigate("/doctorDetails");
             }         
         }
-        else 
+        else if(data.status == 400)
         {
-          toast.error("Invalid Username or Password")
+          toast.error("Invalid Username or Password", { autoClose: 1000 })
+        }
+        else if(data.status == 500)
+        {
+          toast.error("Please provide your credentials", { autoClose: 1000 })
         }
       }).catch((err)=>{
         console.log(err.error)
@@ -80,16 +84,16 @@ function Login() {
 
             <div className="card bg-glass"  >
               <div className="card-body px-4 py-5 px-md-5">
-                <div className="form-outline mb-4">
-                   <label className="form-label text-start custom-label" htmlFor="form3Example3">
+                <div className="form-outline-login mb-4">
+                   <label className="form-label text-start custom-label" htmlFor="form3Example4">
                         Email address
                     </label>
-                    <input type="email" id="form3Example3" className="form-control inputBox" onChange={(event)=>{
+                    <input type="email" id="form3Example3" className="form-control" onChange={(event)=>{
                       setUser({...user, "mail":event.target.value}) }} />
                     </div>
-
+                     
                     {/* Password input */}
-                    <div className="form-outline mb-4">
+                    <div className="form-outline-login mb-4">
                     <label className="form-label text-start custom-label" htmlFor="form3Example4">
                         Password
                     </label>
