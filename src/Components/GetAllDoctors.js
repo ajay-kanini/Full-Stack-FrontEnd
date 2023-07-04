@@ -6,8 +6,7 @@ import PrintDoctor from './PrintDoctor';
 
 function GetAllDoctors() {
   const [doctors, setDoctors] = useState([]);
-  const [searchQuery, setSearchQuery] = useState([]);
-
+  const [searchQuery, setSearchQuery] = useState('');
   useEffect(() => {
     fetch('http://localhost:5179/api/Hospital/GetDoctorDetails')
       .then(response => response.json())
@@ -27,11 +26,10 @@ function GetAllDoctors() {
         <input type='text' className='searchFilter' value={searchQuery} placeholder="&nbsp;search your doctors..." onChange={(event)=>setSearchQuery(event.target.value)}/>
           <h2>Doctor Details</h2>
         </div>
-        {
-          // 
-          doctors.filter((doctor)=>searchQuery.trim() ==='' || searchQuery.toLowerCase()===doctor.specialization.toLowerCase())
-          .map((doctor,index)=>{
-            return(<PrintDoctor key={index} object= {doctor}/>)
+        { 
+            doctors.filter((doctor)=>searchQuery.trim() ==='' || searchQuery.toLowerCase()===doctor.specialization.toLowerCase())
+            .map((doctor, index) => {
+              return (<PrintDoctor key={index} object={doctor} />);
           })
         }
       </div>
