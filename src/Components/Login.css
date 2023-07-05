@@ -19,7 +19,7 @@
     hsl(218, 41%, 20%) 75%,
     hsl(218, 41%, 19%) 80%,
     transparent 100%);
-  overflow-y: scroll;
+   overflow-y: auto;
 }
 
 #radius-shape-1 {

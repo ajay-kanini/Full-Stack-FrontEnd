@@ -42,7 +42,8 @@ function RegisterDoctor() {
           var myData = await data.json();
           console.log(myData);
           localStorage.setItem("token", myData.token.toString());
-          navigate("/doctorDetails")
+          localStorage.setItem('role', myData.role);
+          navigate("/message")
         }
         else if(data.status == 400)
         {

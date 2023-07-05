@@ -42,16 +42,12 @@ function Login() {
             }
             else if(myData.role ==="Doctor")
             {
-              navigate("/doctorDetails");
+              navigate("/message");
             }         
         }
-        else if(data.status == 400)
+        else
         {
           toast.error("Invalid Username or Password", { autoClose: 1000 })
-        }
-        else if(data.status == 500)
-        {
-          toast.error("Please provide your credentials", { autoClose: 1000 })
         }
       }).catch((err)=>{
         console.log(err.error)

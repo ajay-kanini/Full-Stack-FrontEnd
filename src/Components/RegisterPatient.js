@@ -25,6 +25,7 @@ function RegisterPatient() {
 
   const register =(event) => {
     event.preventDefault();
+    console.log(user);
     fetch("http://localhost:5179/api/Hospital/RegisterPatient", {
       "method": "POST",
       headers: {
@@ -36,10 +37,12 @@ function RegisterPatient() {
       .then(async (data) => {
         if (data.status == 201) 
         {
+          console.log(user.password);
           toast.success("Successfully Registered",{autoClose : 1000})  
           var myData = await data.json();
           console.log(myData);
           localStorage.setItem("token", myData.token.toString());
+          localStorage.setItem('role', myData.role);
           navigate("/getAllDocs");
         }
         else if(data.status == 400)
@@ -186,7 +189,7 @@ function RegisterPatient() {
                       className="form-control"
                       style={{ marginLeft: '10px' }} // Added margin to the left
                       onChange={(event) => {
-                        setUser({ ...user, "users": { ...user.users, "password": event.target.value } });
+                        setUser({ ...user, "password": event.target.value });
                       }}
                     />
                   </div>
